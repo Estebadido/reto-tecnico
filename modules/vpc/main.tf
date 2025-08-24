@@ -65,3 +65,31 @@ tags = merge(
   depends_on = [aws_internet_gateway.IGW_Reto]
 }
 
+resource "aws_route_table" "Route_Table_Public" {
+  vpc_id = aws_vpc.VPC_Reto.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.IGW_Reto.id
+  }
+tags = merge(
+    var.tags,
+    {
+      Name = "route_table-public-${var.tags["Project"]}-${var.tags["Environment"]}"
+    }
+  )
+}
+resource "aws_route_table" "Route_Table_Private" {
+  vpc_id = aws_vpc.VPC_Reto.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.NAT_GW_Reto.id
+  }
+tags = merge(
+    var.tags,
+    {
+      Name = "route_table-private-${var.tags["Project"]}-${var.tags["Environment"]}"
+    }
+  )
+}
