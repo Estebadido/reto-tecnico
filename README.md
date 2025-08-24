@@ -75,5 +75,7 @@ ssh -i Reto_Tecnico_Key.pem ec2-user@10.0.4.10
 ###
 ###
 ## Nota2:
-### Actualmente 
-
+### En caso de dudas, comentarios o sugerencias enviarme un correo a estebanrt17@gmail.com
+###
+Saludoooooos
+![Diagrama de una solicitud HTTP](https://i.pinimg.com/736x/09/04/91/090491a3b8106ba0cccf357cb203c570.jpg)

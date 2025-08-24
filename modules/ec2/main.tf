@@ -17,9 +17,7 @@ resource "aws_instance" "Bastion_Host" {
   private_ip    = "10.0.1.10"
   security_groups = var.sg_bastion_host
 
-lifecycle {
-  ignore_changes = all
-}
+
 
 tags = merge(
     var.tags,
@@ -40,9 +38,6 @@ resource "aws_instance" "Instancia_Privada" {
   private_ip    = "10.0.4.10"
   security_groups = var.sg_private_instance
 
-lifecycle {
-  ignore_changes = all
-}
 
 tags = merge(
     var.tags,
