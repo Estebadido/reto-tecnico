@@ -1,0 +1,67 @@
+resource "aws_vpc" "VPC_Reto" {
+  cidr_block = "10.0.0.0/16"
+  tags = merge(
+    var.tags,
+    {
+      Name        = "vpc-${var.tags["Project"]}-${var.tags["Environment"]}"
+    }
+  )
+}
+resource "aws_subnet" "Subnets_Public" {
+  for_each = local.public_subnet_cidrs
+  vpc_id            = aws_vpc.VPC_Reto.id
+  cidr_block        = each.value
+  availability_zone = "${each.key}" 
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.tags["Project"]}-subnet-public-${each.key}-${var.tags["Environment"]}"
+    }
+  )
+  
+}
+resource "aws_subnet" "Subnets_Private" {
+  for_each = local.private_subnet_cidrs
+  vpc_id            = aws_vpc.VPC_Reto.id
+  cidr_block        = each.value
+  availability_zone = "${each.key}" 
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.tags["Project"]}-subnet-private-${each.key}-${var.tags["Environment"]}"
+    }
+  )
+}
+resource "aws_internet_gateway" "IGW_Reto" {
+  vpc_id = aws_vpc.VPC_Reto.id
+  tags = merge(
+    var.tags,
+    {
+      Name = "igw-${var.tags["Project"]}-${var.tags["Environment"]}"
+    }
+  )
+  
+}
+
+resource "aws_eip" "EIP_Reto" {
+  domain   = "vpc"
+  tags = merge(
+    var.tags,
+    {
+      Name = "eip-${var.tags["Project"]}-${var.tags["Environment"]}"
+    }
+  )
+}
+
+resource "aws_nat_gateway" "NAT_GW_Reto" {
+  allocation_id = aws_eip.EIP_Reto.id
+  subnet_id     = aws_subnet.Subnets_Public["${var.region}a"].id
+tags = merge(
+    var.tags,
+    {
+      Name = "nat_gw-${var.tags["Project"]}-${var.tags["Environment"]}"
+    }
+  )
+  depends_on = [aws_internet_gateway.IGW_Reto]
+}
+

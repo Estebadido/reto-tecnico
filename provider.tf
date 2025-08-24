@@ -10,4 +10,5 @@ terraform {
 # Configuro la regione AWS
 provider "aws" {
   region = var.region
+  profile = "default"
 }
