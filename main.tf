@@ -5,3 +5,9 @@ module "vpc" {
   
   
 }
+module "s3" {
+  source      = "./modules/s3"
+  tags        = local.tags
+  
+  
+}

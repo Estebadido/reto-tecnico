@@ -18,5 +18,5 @@ variable "project" {
 variable "owner" { 
     description = "Nombre del propietario del proyecto"
     type        = string
-    default     = "Esteban"
+    default     = "esteban"
 }
