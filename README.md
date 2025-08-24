@@ -27,13 +27,6 @@ https://www.mediafire.com/file/6klxa3vedil51y0/Reto_Tecnico_Key.ppk/file
 https://www.mediafire.com/file/0wfg849vcy8gvky/Reto_Tecnico_Key/file
 ```
 ###
-Para que se pueda crear la instancia por favor descomenta esto del main del modulo de ec2, ya que con eso protejo a la instancia de ser eliminada por algun cambio a nivel de sg, iam rol entre otros ya que terraform no puede hacer modificaciones en caliente
-```
-lifecycle {
-  ignore_changes = all
-}
-```
-###
 Despues de tener todo configurado abrimos la terminal de visual y ponemos 
 ```
 terraform init
