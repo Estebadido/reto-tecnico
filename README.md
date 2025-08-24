@@ -1,17 +1,17 @@
 # Despliegue de la infra levantada en terraform con Linux
 ## Requisitos para modificar y desplegar la infraestructura:
-1. Terrafomr
-2. Extencion de Terrafomr para VSC
+1. Terraform
+2. Extensión de Terraform para VSC
 3. Visual Studio Code
-4. Git
+4. Git/ Github
 5. AWS CLI
 ###
-Lo primero q debemos hacer es clonar la repo con 
+Lo primero q debemos hacer es clonar el repositorio con:
 ```
-gitn clone https://github.com/Estebadido/reto-tecnico.git
+git clone https://github.com/Estebadido/reto-tecnico.git
 ```
 ###
-Despues de eso debemos iniciar el visual dentro de la carpeta de la repo
+Despues de eso debemos iniciar el visual dentro de la carpeta del repositorio
 ```
 code .
 ```
@@ -35,8 +35,6 @@ terraform apply
 Nos pedira confirmar con "yes"
 ###
 Esperamos a que la infraestructura se despliegue
-###
-Despues de terminar el despliegue y queremos modificar algo a nivel de sg, iamrol, tablas de rutas entre otros, volvemos a comentar el lifecycle para proteger los ec2 
 ###
 ###
 ###
