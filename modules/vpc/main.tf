@@ -93,3 +93,13 @@ tags = merge(
     }
   )
 }
+resource "aws_route_table_association" "Association_Route_Table_Public" {
+  for_each = aws_subnet.Subnets_Public
+  subnet_id      = aws_subnet.Subnets_Public[each.key].id
+  route_table_id = aws_route_table.Route_Table_Public.id
+}
+resource "aws_route_table_association" "Association_Route_Table_Private" {
+  for_each = aws_subnet.Subnets_Private
+  subnet_id      = aws_subnet.Subnets_Private[each.key].id
+  route_table_id = aws_route_table.Route_Table_Private.id
+}
