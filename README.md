@@ -77,5 +77,11 @@ ssh -i Reto_Tecnico_Key.pem ec2-user@10.0.4.10
 ## Nota2:
 ### En caso de dudas, comentarios o sugerencias enviarme un correo a estebanrt17@gmail.com
 ###
+###
+###
+## Diagrama de la arquitectura
+https://lucid.app/lucidchart/79c7f20d-f273-424d-956a-0dd9b74f2412/edit?viewport_loc=-1953%2C-546%2C4556%2C2705%2C0_0&invitationId=inv_1dd79a87-48d1-4add-ae7b-e163b293f791
+###
+###
 Saludoooooos
 ![Diagrama de una solicitud HTTP](https://i.pinimg.com/736x/09/04/91/090491a3b8106ba0cccf357cb203c570.jpg)
