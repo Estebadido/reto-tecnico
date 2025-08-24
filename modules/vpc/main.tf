@@ -48,14 +48,25 @@ resource "aws_eip" "EIP_Reto" {
   tags = merge(
     var.tags,
     {
-      Name = "eip-${var.tags["Project"]}-${var.tags["Environment"]}"
+      Name = "eip-ec2-${var.tags["Project"]}-${var.tags["Environment"]}"
+    }
+  )
+}
+
+resource "aws_eip" "EIP_NAT_Reto" {
+  domain   = "vpc"
+  tags = merge(
+    var.tags,
+    {
+      Name = "eip-nat-${var.tags["Project"]}-${var.tags["Environment"]}"
     }
   )
 }
 
 resource "aws_nat_gateway" "NAT_GW_Reto" {
-  allocation_id = aws_eip.EIP_Reto.id
+
   subnet_id     = aws_subnet.Subnets_Public["${var.region}a"].id
+  allocation_id = aws_eip.EIP_NAT_Reto.id
 tags = merge(
     var.tags,
     {

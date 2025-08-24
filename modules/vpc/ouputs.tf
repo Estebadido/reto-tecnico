@@ -12,3 +12,8 @@ output "private_subnets_ids" {
     description = "El ID de la subnet privada"
   value = { for zona_disp, subnet in aws_subnet.Subnets_Private : zona_disp => subnet.id }
 }
+output "eip_id" {
+  description = "El ID de la Elastic IP"
+  value       = aws_eip.EIP_Reto.id
+  
+}
