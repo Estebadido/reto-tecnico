@@ -8,6 +8,13 @@ resource "aws_key_pair" "Key_Ec2" {
     }
   )
 }
+
+# llave bastion local
+# resource "aws_key_pair" "bastion_key" {
+#   key_name   = "acme-bastion-key"
+#   public_key = file("~/.ssh/bastion-key.pub")
+# }
+
 resource "aws_instance" "Bastion_Host" {
   ami           = "ami-00ca32bbc84273381"
   instance_type = "t3.micro"
@@ -15,7 +22,7 @@ resource "aws_instance" "Bastion_Host" {
   iam_instance_profile = var.iam_instance_profile_name
   subnet_id = var.public_subnets_ids["${var.region}a"]
   private_ip    = "10.0.1.10"
-  vpc_security_group_ids = var.sg_bastion_host_id
+  vpc_security_group_ids = [var.sg_bastion_host_id]
 
 tags = merge(
     var.tags,
@@ -34,7 +41,7 @@ resource "aws_instance" "Instancia_Privada" {
   key_name = aws_key_pair.Key_Ec2.key_name
   subnet_id = var.private_subnets_ids["${var.region}b"]
   private_ip    = "10.0.4.10"
-  vpc_security_group_ids = var.sg_private_instance_id
+  vpc_security_group_ids = [var.sg_private_instance_id]
 
 tags = merge(
     var.tags,
