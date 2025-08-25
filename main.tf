@@ -15,8 +15,8 @@ module "ec2" {
   source      = "./modules/ec2"
   public_subnets_ids  = module.vpc.public_subnets_ids
   private_subnets_ids = module.vpc.private_subnets_ids
-  sg_bastion_host = module.sg.sg_bastion_host
-  sg_private_instance = module.sg.sg_private_instance
+  sg_bastion_host_id = module.sg.sg_bastion_host
+  sg_private_instance_id = module.sg.sg_private_instance
   region            = var.region
   eip_id = module.vpc.eip_id
   iam_instance_profile_name = module.iam.ec2_instance_profile_name
