@@ -23,14 +23,14 @@ variable "iam_instance_profile_name" {
     type        = string
   
 }
-variable "sg_bastion_host" {
+variable "sg_bastion_host_id" {
     description = "Security Group del Bastion Host"
-    type        = list(string)
+    type        = string
   
 }
-variable "sg_private_instance" {
+variable "sg_private_instance_id" {
     description = "Security Group de la Instancia Privada"
-    type        = list(string)
+    type        = string
   
 }
 variable "eip_id" {
