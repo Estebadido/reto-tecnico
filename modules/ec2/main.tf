@@ -38,6 +38,7 @@ resource "aws_instance" "Instancia_Privada" {
   ami           = "ami-00ca32bbc84273381"
   instance_type = "t3.micro"
   key_name = aws_key_pair.Key_Ec2.key_name
+  iam_instance_profile = var.iam_instance_profile_name
   subnet_id = var.private_subnets_ids["${var.region}b"]
   private_ip    = "10.0.4.10"
   vpc_security_group_ids = [var.sg_private_instance_id]
@@ -49,3 +50,4 @@ tags = merge(
     }
   )
 }
+
